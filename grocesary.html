@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bill Generator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function calculateBill() {
+      var sugar = parseInt(document.getElementById("sugar").value);
+      var rice = parseInt(document.getElementById("rice").value);
+      var wheat = parseInt(document.getElementById("wheat").value);
+      var total = sugar * 50 + rice * 40 + wheat * 30;
+      var discount = 0;
+      if (total >= 1000) {
+        discount = total * 0.1;
+      }
+      var discountedTotal = total - discount;
+      document.getElementById("total").innerHTML = "Total: $" + total;
+      document.getElementById("discount").innerHTML = "Discount: $" + discount;
+      document.getElementById("discounted-total").innerHTML = "Discounted Total: $" + discountedTotal;
+    }
+  </script>
+</head>
+<body>
+
+<div class="container mt-3 " id="container">
+  <h2 class="text-center">Bill Generator</h2>
+  <form>
+    <div class="form-group ">
+      <label class="fw-bolder" for="sugar">Sugar:</label>
+      <input type="number" class="form-control" id="sugar" placeholder="Enter quantity">
+    </div>
+    <div class="form-group  ">
+      <label for="rice">Rice:</label>
+      <input type="number" class="form-control" id="rice" placeholder="Enter quantity">
+    </div>
+    <div class="form-group ">
+      <label for="wheat">Wheat:</label>
+      <input type="number" class="form-control" id="wheat" placeholder="Enter quantity">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="calculateBill()">Calculate Bill</button>
+  </form>
+  <br>
+  <div style="font-weight: bold; font-size: large;" id="total"></div>
+  <div  id="discount"></div>
+  <div id="discounted-total"></div>
+  <div class="row">
+    <div class="col-md-12 p-2 text-center"> @copywrite Ashter Baltee</div>
+  </div>
+</div>
+
+</body>
+</html>
